@@ -1,0 +1,4 @@
+--patch-module
+example=_
+--add-reads
+example=ALL-UNNAMED
