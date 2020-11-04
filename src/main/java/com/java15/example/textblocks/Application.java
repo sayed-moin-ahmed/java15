@@ -1,5 +1,8 @@
 package com.java15.example.textblocks;
 
+/**
+ * https://docs.oracle.com/en/java/javase/15/text-blocks/index.html
+ */
 public class Application {
 
     /**
