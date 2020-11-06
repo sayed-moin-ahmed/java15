@@ -21,4 +21,11 @@ public class Application {
         ssTopInterface.consume(new Application());
     }
 
+    public void anonymousSealed(){
+        //need to check
+           /* final Shape c = new Shape(){
+
+            } extends Shape; */
+    }
+
 }
