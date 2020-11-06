@@ -15,6 +15,20 @@ abstract class AbstractRecord {
  * Extends interface,sealed interface
  */
 public record Rectangle(double height, double width) implements Callable, SubTopInterface {
+
+    // Static field
+    static double goldenRatio;
+
+    // Static initializer
+    static {
+        goldenRatio = (1 + Math.sqrt(5)) / 2;
+    }
+
+    // Static method
+    public static Rectangle createGoldenRectangle(double width) {
+        return new Rectangle(width, width * goldenRatio);
+    }
+
     public Rectangle {
         if (height <= 0 || width <= 0) {
             throw new java.lang.IllegalArgumentException(
@@ -24,6 +38,8 @@ public record Rectangle(double height, double width) implements Callable, SubTop
 
     @Override
     public String call() throws Exception {
+        System.out.println(createGoldenRectangle(width));
+        WithoutParam.InnerPublicRecord wipr = new WithoutParam.InnerPublicRecord();
         return "Hello! Area::"+(height*width);
     }
 }
@@ -33,11 +49,24 @@ record WithoutParam() implements Runnable{
     //Constructor same as WithoutParam()
     public WithoutParam(){
         System.out.println("Initializing without Param Constructor...");
+        InnerPrivateRecord ir = new InnerPrivateRecord();
     }
 
     @Override
     public void run() {
         System.out.println("Demo");
+    }
+
+    private record InnerPrivateRecord() {
+        InnerPrivateRecord {
+            System.out.println("Private inner record Record");
+        }
+    }
+
+    public record InnerPublicRecord() {
+        public InnerPublicRecord {
+            System.out.println("public inner record Record");
+        }
     }
 }
 
