@@ -8,7 +8,9 @@ public class Application {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
         ExecutorService service = Executors.newCachedThreadPool();
         String future = (String) service.submit(new Rectangle(10,10)).get();
+        service.submit(new WithoutParam());
         System.out.println(future);
+        System.out.println(new WithParam("Test"));
         service.shutdown();
     }
 }
