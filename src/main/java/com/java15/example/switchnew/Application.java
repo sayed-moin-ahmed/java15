@@ -1,5 +1,8 @@
 package com.java15.example.switchnew;
 
+/**
+ * https://docs.oracle.com/en/java/javase/14/language/switch-expressions.html
+ */
 public class Application {
 
     public enum Day{
