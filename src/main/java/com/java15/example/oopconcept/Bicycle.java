@@ -4,6 +4,7 @@ package com.java15.example.oopconcept;
  * blueprint or prototype
  */
 public class Bicycle {
+    protected String owner;
     //Fields(State)
     private int currentGear=0;
     private int currentPedalCadence=0;
