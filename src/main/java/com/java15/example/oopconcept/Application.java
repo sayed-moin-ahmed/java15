@@ -8,7 +8,7 @@ package com.java15.example.oopconcept;
 public class Application {
     public static void main(String[] args) {
         dataEncapsulation();
-        Bicycle cycle = new MountainBikes("Sam");
+        ACMEBicycle cycle = new MountainBikes("Sam");
         //Uncomment below line - Bicycle is not aware of show method as its defined in sub class
         /*bicycle.show();*/
         System.out.println(cycle);
@@ -20,7 +20,7 @@ public class Application {
     }
 
     private static void dataEncapsulation() {
-        Bicycle cycle  = new Bicycle();
+        ACMEBicycle cycle  = new ACMEBicycle();
         System.out.println(cycle);
         cycle.changePedalCadence();
         cycle.changeCurrentSpeed();
