@@ -29,6 +29,17 @@ class Demo{
      */
     final private static int fixed =5;
 
+    //https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html
+    //Relying on such default values, however, is generally considered bad programming style.
+    private byte value1=0;
+    private short value2=0;
+    private int value3=0;
+    private long value4=0;
+    private float value5=0.0f;
+    private double value6=0.00;
+    private char value7='c';
+    private boolean value8 = false;
+    private String value9=null;
 
     public void show(int value){
         /**
