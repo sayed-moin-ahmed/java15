@@ -1,5 +1,11 @@
 package com.java15.example.classesobjects;
 
+import java.util.Objects;
+
 public interface TopInterface {
-    public void show();
+    void show();
+
+    public interface  NestedInterface{
+        void show1();
+    }
 }

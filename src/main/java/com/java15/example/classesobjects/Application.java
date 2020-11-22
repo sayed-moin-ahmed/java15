@@ -13,6 +13,9 @@ public class Application {
         reference.show();
         reference = getTopInterface1();
         reference.show();
+        reference = new FunctionalInterfaceImpl();
+        reference.toString();
+        ((FunctionalInterfaceImpl) reference).ni.show1();
     }
 
     private static TopInterface getTopInterface1() {
@@ -21,7 +24,7 @@ public class Application {
     }
 
     private static TopInterface getTopInterface() {
-        TopInterface reference = new CustomClass();
+        TopInterface reference = new CustomClass("Hello world!");
         return reference;
     }
 
