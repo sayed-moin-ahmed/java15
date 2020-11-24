@@ -2,7 +2,7 @@ package com.java15.example.classesobjects;
 
 
 /**
- * https://docs.oracle.com/javase/tutorial/java/javaOO/index.html
+ * https://docs.oracle.com/javase/tutorial/java/javaOO/nested.html
  */
 public class Application {
 
