@@ -7,6 +7,25 @@ package com.java15.example.classesobjects;
 public class Application {
 
     public static void main(String[] args) {
+        OuterClass outerClass = new OuterClass("rock",30);
+        OuterClass.PublicNestedClass publicNestedClass = outerClass.new PublicNestedClass();
+        publicNestedClass.setName("public nested class");
+        OuterClass.PackagePrivateNestedClass packageNestedClass = outerClass.new PackagePrivateNestedClass();
+        packageNestedClass.setName("package nested class");
+        OuterClass.ProtectedNestedClass protectedNestedClass = outerClass.new ProtectedNestedClass();
+        protectedNestedClass.setName("protected nested class");
+        OuterClass.StaticPublicNestedClass  staticPublicNestedClass = new OuterClass.StaticPublicNestedClass();
+        staticPublicNestedClass.setName("static nested class");
+        System.out.println(staticPublicNestedClass);
+        System.out.println(publicNestedClass);
+        System.out.println(protectedNestedClass);
+        System.out.println(packageNestedClass);
+        System.out.println(outerClass);
+
+        //INTERFACEDEMO();
+    }
+
+    private static void interfaceDemo() {
         //This technique, called covariant return type, means that the return type is allowed to vary in the same direction as the subclass.
         TopInterface  reference = null;
         reference = getTopInterface();
