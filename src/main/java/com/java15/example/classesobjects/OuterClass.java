@@ -1,12 +1,14 @@
 package com.java15.example.classesobjects;
 
 public class OuterClass {
+    private static int counter=0;
     private String name;
     private int age;
 
     public OuterClass(String name, int age) {
         this.name = name;
         this.age = age;
+        counter++;
     }
 
     static public class StaticPublicNestedClass{
@@ -22,6 +24,7 @@ public class OuterClass {
 
         @Override
         public String toString() {
+            System.out.println("StaticPublicNestedClass::"+counter/*+":age:"+age*/);//Non-static field 'age' cannot be referenced from a static context
             return "PublicNestedClass{" +
                     "name='" + name + '\'' +
                     '}';
@@ -41,6 +44,7 @@ public class OuterClass {
 
         @Override
         public String toString() {
+            System.out.println("PublicNestedClass::"+counter);
             return "PublicNestedClass{" +
                     "name='" + name + '\'' +
                     '}';
@@ -59,6 +63,7 @@ public class OuterClass {
 
         @Override
         public String toString() {
+            System.out.println("ProtectedNestedClass::"+counter);
             return "ProtectedNestedClass{" +
                     "name='" + name + '\'' +
                     '}';
@@ -77,6 +82,7 @@ public class OuterClass {
 
         @Override
         public String toString() {
+            System.out.println("PackagePrivateNestedClass::"+counter);
             return "PackagePrivateNestedClass{" +
                     "name='" + name + '\'' +
                     '}';
