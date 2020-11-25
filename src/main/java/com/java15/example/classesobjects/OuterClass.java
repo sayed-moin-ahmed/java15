@@ -2,6 +2,9 @@ package com.java15.example.classesobjects;
 
 import java.util.function.BiFunction;
 
+/**
+ * https://docs.oracle.com/javase/tutorial/reflect/member/methodparameterreflection.html#implcit_and_synthetic
+ */
 public class OuterClass {
     private static int counter=0;
     private String name;
@@ -11,6 +14,10 @@ public class OuterClass {
         this.name = name;
         this.age = age;
         counter++;
+    }
+
+    enum Colors{
+        RED,GREEN;
     }
 
     static public class StaticPublicNestedClass{

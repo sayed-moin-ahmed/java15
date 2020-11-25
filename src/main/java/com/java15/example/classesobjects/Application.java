@@ -3,10 +3,16 @@ package com.java15.example.classesobjects;
 
 /**
  * https://docs.oracle.com/javase/tutorial/java/javaOO/nested.html
+ *
  */
 public class Application {
 
     public static void main(String[] args) {
+        nestedClassDemo();
+        //interfaceDemo();
+    }
+
+    private static void nestedClassDemo() {
         OuterClass outerClass = new OuterClass("rock",30);
         OuterClass.PublicNestedClass publicNestedClass = outerClass.new PublicNestedClass();
         publicNestedClass.setName("public nested class");
@@ -23,7 +29,7 @@ public class Application {
         System.out.println(outerClass);
         outerClass.showMethodInnerClass(10,20);
         outerClass.showStaticMethodInnerClass(20,30);
-        //INTERFACEDEMO();
+        System.out.println(OuterClass.Colors.values());
     }
 
     private static void interfaceDemo() {
