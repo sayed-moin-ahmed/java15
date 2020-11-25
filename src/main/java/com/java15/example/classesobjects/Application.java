@@ -21,7 +21,8 @@ public class Application {
         System.out.println(protectedNestedClass);
         System.out.println(packageNestedClass);
         System.out.println(outerClass);
-
+        outerClass.showMethodInnerClass(10,20);
+        outerClass.showStaticMethodInnerClass(20,30);
         //INTERFACEDEMO();
     }
 
