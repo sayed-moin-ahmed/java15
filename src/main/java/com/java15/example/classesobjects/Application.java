@@ -2,6 +2,7 @@ package com.java15.example.classesobjects;
 
 
 import java.util.Arrays;
+import java.util.Iterator;
 
 /**
  * https://docs.oracle.com/javase/tutorial/java/javaOO/nested.html
@@ -32,6 +33,12 @@ public class Application {
         outerClass.showMethodInnerClass(10,20);
         outerClass.showStaticMethodInnerClass(20,30);
         System.out.println(Arrays.toString(OuterClass.Colors.values()));
+        outerClass.add("Test1");
+        outerClass.add("Test2");
+        Iterator iterator = outerClass.iterator(); //Iterator design pattern...
+        while (iterator.hasNext()){
+            System.out.println(iterator.next());
+        }
     }
 
     private static void interfaceDemo() {

@@ -1,19 +1,45 @@
 package com.java15.example.classesobjects;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.function.BiFunction;
 
 /**
  * https://docs.oracle.com/javase/tutorial/reflect/member/methodparameterreflection.html#implcit_and_synthetic
  */
 public class OuterClass {
+
     private static int counter=0;
     private String name;
     private int age;
+    List<String> list = new ArrayList<>();
 
     public OuterClass(String name, int age) {
         this.name = name;
         this.age = age;
         counter++;
+    }
+
+    public void add(String value){
+        list.add(value);
+    }
+
+    public Iterator iterator(){
+        int val = list.size();
+
+        Iterator iterator = new Iterator() {
+            int counter=0;
+            @Override
+            public boolean hasNext() {
+                return counter<val;
+            }
+            @Override
+            public Object next() {
+                return list.get(counter++);
+            }
+        };
+        return iterator;
     }
 
     enum Colors{
