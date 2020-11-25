@@ -15,6 +15,7 @@ import java.util.function.Function;
  * https://openjdk.java.net/projects/amber/LVTIstyle.html
  */
 public class Application {
+
     public static void main(String[] args){
         // Invalid declaration ->var url = null;
         readURL();
