@@ -1,5 +1,7 @@
 package com.java15.example.classesobjects;
 
+import java.util.function.BiFunction;
+
 public class OuterClass {
     private static int counter=0;
     private String name;
@@ -105,6 +107,44 @@ public class OuterClass {
                     "name='" + name + '\'' +
                     '}';
         }
+    }
+
+    public void showMethodInnerClass(int a, int b){
+
+        final class MethodInnerClass{
+            public Integer add(int a, int b){
+                return a+b;
+            }
+        }
+
+        record InnerRecord(Integer a, Integer b){
+             private final static BiFunction<Integer,Integer,Integer> result = (p1, p2) -> p1+p2;
+             public Integer add(){
+                 return result.apply(a,b);
+             }
+        }
+        System.out.println(new MethodInnerClass().add(a,b));
+        System.out.println(new InnerRecord(a,b).add());
+    }
+
+
+    public static void showStaticMethodInnerClass(int a, int b){
+
+        final class MethodInnerClass{
+            public Integer add(int a, int b){
+                return a+b;
+            }
+        }
+
+        record InnerRecord(Integer a, Integer b){
+            private final static BiFunction<Integer,Integer,Integer> result = (p1, p2) -> p1+p2;
+            public Integer add(){
+                return result.apply(a,b);
+            }
+        }
+
+        System.out.println(new MethodInnerClass().add(a,b));
+        System.out.println(new InnerRecord(a,b).add());
     }
 
     @Override
