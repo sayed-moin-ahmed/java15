@@ -11,6 +11,7 @@ public class LambdaExpressions {
 
     public static void main(String[] args){
         //printPersonsOlderThan(getPersons(),5);
+        /*
         printPersonsOlderThan(getPersons(), new Check<Person>() {
             @Override
             public boolean test(Person type) {
@@ -18,6 +19,9 @@ public class LambdaExpressions {
             }
 
         });
+        */
+        Check<Person> personGt7 =  p -> p.getAge() > 7;
+        printPersonsOlderThan(getPersons(),personGt7);
 
     }
     public static List<Person> getPersons(){
