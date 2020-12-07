@@ -10,6 +10,7 @@ import java.util.function.Predicate;
 /**
  * https://docs.oracle.com/javase/tutorial/java/javaOO/examples/RosterTest.java
  * https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html
+ * https://docs.oracle.com/javase/tutorial/java/javaOO/methodreferences.html
  */
 public class LambdaExpressions {
 
@@ -33,7 +34,7 @@ public class LambdaExpressions {
       //  printPersonsOlderThan(getPersons(),personGt7);
       //  printPersonLesserThan(getPersons(),personLessThan,log);
         //processElements(getPersons(),personLessThan,Person::getName,log);
-        sort(getPersons(),Person::compare,log);
+        sort(getPersons(),Person::compare,log);//Can't sort list.of
     }
 
     public static List<Person> getPersons(){
