@@ -3,6 +3,7 @@ package com.java15.example.classesobjects;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.function.Predicate;
 
 /**
@@ -13,7 +14,7 @@ public class LambdaExpressions {
 
 
     private  static Check<Person> personGt7 =  p -> p.getAge() > 7;
-    private static Consumer<Person> log = System.out::println;
+    private static Consumer log = System.out::println;
     private static Predicate<Person> personLessThan = p -> p.getAge()<10;
 
     public static void main(String[] args){
@@ -28,8 +29,9 @@ public class LambdaExpressions {
         });
         */
 
-        printPersonsOlderThan(getPersons(),personGt7);
-        printPersonLesserThan(getPersons(),personLessThan,log);
+      //  printPersonsOlderThan(getPersons(),personGt7);
+      //  printPersonLesserThan(getPersons(),personLessThan,log);
+        processElements(getPersons(),personLessThan,Person::getName,log);
     }
 
     public static List<Person> getPersons(){
@@ -69,6 +71,14 @@ public class LambdaExpressions {
                 .stream()
                 .filter(predicate)
                 .forEach(consumer);
+    }
+
+    public static <X,Y> void processElements(List<X> list, Predicate<X> predicate, Function<X,Y> mapper, Consumer<Y> block){
+        list
+                .stream()
+                .filter(predicate)
+                .map(mapper)
+                .forEach(block);
     }
 
 }
