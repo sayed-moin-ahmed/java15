@@ -10,6 +10,7 @@ import java.util.function.Predicate;
 /**
  * https://docs.oracle.com/javase/tutorial/java/javaOO/examples/RosterTest.java
  * https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html
+ * https://docs.oracle.com/javase/tutorial/java/javaOO/methodreferences.html
  */
 public class LambdaExpressions {
 
