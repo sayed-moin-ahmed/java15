@@ -2,12 +2,19 @@ package com.java15.example.classesobjects;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 
 /**
  * https://docs.oracle.com/javase/tutorial/java/javaOO/examples/RosterTest.java
  * https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html
  */
 public class LambdaExpressions {
+
+
+    private  static Check<Person> personGt7 =  p -> p.getAge() > 7;
+    private static Consumer<Person> log = System.out::println;
+    private static Predicate<Person> personLessThan = p -> p.getAge()<10;
 
     public static void main(String[] args){
         //printPersonsOlderThan(getPersons(),5);
@@ -20,10 +27,11 @@ public class LambdaExpressions {
 
         });
         */
-        Check<Person> personGt7 =  p -> p.getAge() > 7;
-        printPersonsOlderThan(getPersons(),personGt7);
 
+        printPersonsOlderThan(getPersons(),personGt7);
+        printPersonLesserThan(getPersons(),personLessThan,log);
     }
+
     public static List<Person> getPersons(){
         return List.of(
                 new Person("Test1", LocalDate.now(), Person.Sex.FEMALE,"test1@gmail.com",10),
@@ -39,6 +47,7 @@ public class LambdaExpressions {
 
         );
     }
+
     public static void printPersonsOlderThan(List<Person> roster, int age){
         for(Person person : roster){
             if(person.getAge()<10){
@@ -53,6 +62,13 @@ public class LambdaExpressions {
                 System.out.println(person);
             }
         }
+    }
+
+    public static void printPersonLesserThan(List<Person> roster, Predicate<Person> predicate, Consumer<Person> consumer){
+        roster
+                .stream()
+                .filter(predicate)
+                .forEach(consumer);
     }
 
 }
