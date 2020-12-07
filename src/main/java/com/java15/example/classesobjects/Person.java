@@ -1,8 +1,14 @@
 package com.java15.example.classesobjects;
 
 import java.time.LocalDate;
+import java.util.Comparator;
 
 public class Person {
+
+
+    static public int compare(Person o1, Person o2) {
+        return Integer.compare(o1.getAge(), o2.getAge());
+    }
 
     public enum Sex{
         MALE,FEMALE;
@@ -72,5 +78,6 @@ public class Person {
                 ", emailAddress='" + emailAddress + '\'' +
                 '}';
     }
+
 }
 
