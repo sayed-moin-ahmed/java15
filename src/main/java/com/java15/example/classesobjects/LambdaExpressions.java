@@ -1,6 +1,7 @@
 package com.java15.example.classesobjects;
 
 import java.time.LocalDate;
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -31,7 +32,8 @@ public class LambdaExpressions {
 
       //  printPersonsOlderThan(getPersons(),personGt7);
       //  printPersonLesserThan(getPersons(),personLessThan,log);
-        processElements(getPersons(),personLessThan,Person::getName,log);
+        //processElements(getPersons(),personLessThan,Person::getName,log);
+        sort(getPersons(),Person::compare,log);
     }
 
     public static List<Person> getPersons(){
@@ -81,4 +83,8 @@ public class LambdaExpressions {
                 .forEach(block);
     }
 
+    public static<X> void sort(List<X> list, Comparator<X> comparator,Consumer<X> log){
+        list.sort(comparator);
+        list.forEach(log);
+    }
 }
