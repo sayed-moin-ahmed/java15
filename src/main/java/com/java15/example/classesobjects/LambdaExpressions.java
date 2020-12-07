@@ -33,7 +33,7 @@ public class LambdaExpressions {
       //  printPersonsOlderThan(getPersons(),personGt7);
       //  printPersonLesserThan(getPersons(),personLessThan,log);
         //processElements(getPersons(),personLessThan,Person::getName,log);
-        sort(getPersons(),Person::compare,log);
+        sort(getPersons(),Person::compare,log);//Can't sort list.of
     }
 
     public static List<Person> getPersons(){
