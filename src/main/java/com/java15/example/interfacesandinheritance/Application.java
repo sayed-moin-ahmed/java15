@@ -8,9 +8,13 @@ import java.util.function.Consumer;
 public class Application {
     public static void main(String[] args) {
         Consumer<String> consumer = System.out::println;
+        interfaceDemo(consumer);
+    }
+
+    private static void interfaceDemo(Consumer<String> consumer) {
         DemoInterface demoInterface = null;
         demoInterface = new DemoInterfaceImplV1();
-        consumer.accept(demoInterface.msg("world"));
+        consumer.accept(demoInterface.msg("world","war"));
         demoInterface = new DemoInterfaceImplV2();
         consumer.accept(demoInterface.msg("world"));
     }
