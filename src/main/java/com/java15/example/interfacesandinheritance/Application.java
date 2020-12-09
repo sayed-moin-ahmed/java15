@@ -17,6 +17,16 @@ public class Application {
         Consumer<String> consumer = System.out::println;
         //interfaceDemo(consumer);
         //instanceOfDemo(consumer);
+        //defaultInheritance(consumer);
+        staticMethods(consumer);
+    }
+
+    private static void staticMethods(Consumer<String> consumer) {
+        consumer.accept(I1.msg());
+        consumer.accept(I2.msg());
+    }
+
+    private static void defaultInheritance(Consumer<String> consumer) {
         I12 i12 = new DefaultDiamondImpl();
         consumer.accept(i12.msg());
         I22 i22 = new DefaultDiamondImpl();
