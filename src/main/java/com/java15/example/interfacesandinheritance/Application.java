@@ -7,6 +7,9 @@ import com.java15.example.interfacesandinheritance.i2.I2;
 import com.java15.example.interfacesandinheritance.i2.I22;
 import com.java15.example.interfacesandinheritance.i2.I2Impl;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.function.Consumer;
 
 /**
@@ -19,6 +22,12 @@ public class Application {
         //instanceOfDemo(consumer);
         //defaultInheritance(consumer);
         staticMethods(consumer);
+
+        List<String> list = new ArrayList<>();
+        list.add("sayed");
+        list.add("ahmed");
+        Collections.sort(list,I2::compare);
+
     }
 
     private static void staticMethods(Consumer<String> consumer) {
@@ -48,4 +57,7 @@ public class Application {
         demoInterface = new DemoInterfaceImplV2();
         consumer.accept(demoInterface.msg("world"));
     }
+
+
+
 }
