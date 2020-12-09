@@ -4,4 +4,10 @@ import com.java15.example.interfacesandinheritance.DemoInterface;
 
 public interface I2 {
     String msg(String param1,String param2, String param3);
+
+    static String msg(){
+        return """
+                I2
+                """;
+    }
 }
