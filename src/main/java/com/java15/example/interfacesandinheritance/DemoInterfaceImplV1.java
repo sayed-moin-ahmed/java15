@@ -13,16 +13,7 @@ public class DemoInterfaceImplV1 implements DemoInterface {
         return "Hello DemoInterfaceImplV1";
     }
 
-
-    public String msg(String msg) {
+    static public String msg(String msg) {
         return String.format("Hello %s", msg);
-    }
-
-    public String msg(String param1, String param2) {
-        return String.format("%s %s",param1,param2);
-    }
-
-    public String msg(String param1, String param2, String param3) {
-        return String.format(param1,param2,param3);
     }
 }
