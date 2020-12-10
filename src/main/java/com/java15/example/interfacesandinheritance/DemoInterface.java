@@ -12,4 +12,8 @@ public interface DemoInterface extends I12, I22 {
         System.out.println(I22.super.msg());
         return "DemoInterface";
     }
+
+    static void msg(String value){
+        System.out.println(value);
+    }
 }

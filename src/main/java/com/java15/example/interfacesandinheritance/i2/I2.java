@@ -18,4 +18,5 @@ public interface I2  {
     static <T extends Comparable> int compare(T o1, T o2) {
         return o1.compareTo(o2);
     }
+
 }
