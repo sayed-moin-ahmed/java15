@@ -19,12 +19,13 @@ import java.util.function.Consumer;
 public class Application {
     public static void main(String[] args) {
         Consumer<String> consumer = System.out::println;
-        interfaceDemo(consumer);
+        //interfaceDemo(consumer);
         //instanceOfDemo(consumer);
         //defaultInheritance(consumer);
         //staticMethods(consumer);
         //sort();
         //customSort();
+
     }
 
     private static void customSort() {
