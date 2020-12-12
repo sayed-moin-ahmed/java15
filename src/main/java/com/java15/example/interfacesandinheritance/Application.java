@@ -7,17 +7,20 @@ import com.java15.example.interfacesandinheritance.i2.I2;
 import com.java15.example.interfacesandinheritance.i2.I22;
 import com.java15.example.interfacesandinheritance.i2.I2Impl;
 
+import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.Consumer;
 
+import static java.lang.Class.forName;
+
 /**
  * https://docs.oracle.com/javase/tutorial/java/IandI/index.html
  */
 public class Application {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ClassNotFoundException {
         Consumer<String> consumer = System.out::println;
         //interfaceDemo(consumer);
         //instanceOfDemo(consumer);
@@ -25,7 +28,21 @@ public class Application {
         //staticMethods(consumer);
         //sort();
         //customSort();
+        cloning();
+    }
 
+    private static void cloning() throws ClassNotFoundException {
+        ObjectAsSuperclass objectAsSuperclass = new ObjectAsSuperclass(22,"sam");
+        try {
+            if (objectAsSuperclass.clone() instanceof ObjectAsSuperclass cloned) {
+                System.out.println(cloned);
+                cloned.setName("Rocky");
+                System.out.println(objectAsSuperclass);
+                System.out.println(cloned);
+            }
+        }catch (CloneNotSupportedException cloneNotSupportedException){
+            System.out.println(cloneNotSupportedException.getMessage());
+        }
     }
 
     private static void customSort() {
