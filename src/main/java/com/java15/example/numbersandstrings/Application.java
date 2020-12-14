@@ -22,5 +22,12 @@ public class Application {
         System.out.println(doubleValue.longValue());
         System.out.println(doubleValue.floatValue());
         System.out.println(integerValue.toString());
+
+        Integer value1 = 5;
+        Integer value2 = 5;
+        System.out.println("Compared values : "+value1.compareTo(value2));
+        System.out.println("Decode::"+Integer.decode("23"));
+        System.out.println("Parse Int::"+Integer.parseInt("23"));
+        System.out.println("Value Of::"+Integer.valueOf("23"));
     }
 }
