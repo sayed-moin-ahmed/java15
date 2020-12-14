@@ -1,10 +1,34 @@
 package com.java15.example.numbersandstrings;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 /**
  * http://www.gotw.ca/publications/c_family_interview.htm
  */
 public class Application {
     public static void main(String[] args) {
+        //numbers();
+        atomicInt();
+    }
+
+    private static void atomicInt() {
+        Runnable r  = new Runnable() {
+            AtomicInteger ai1 = new AtomicInteger();
+            AtomicInteger ai2 = new AtomicInteger();
+
+            @Override
+            public void run() {
+                System.out.println("Increment and Get ::"+ai1.incrementAndGet());
+                System.out.println("Fetch value and Increment::"+ai2.getAndIncrement());
+            }
+        };
+        Thread thread1 = new Thread(r);
+        thread1.start();
+        Thread thread2 = new Thread(r);
+        thread2.start();
+    }
+
+    private static void numbers() {
         Number integerValue = 5;
         Number floatValue = 5.5;
         Number doubleValue = 5.6777888888;
