@@ -1,5 +1,8 @@
 package com.java15.example.numbersandstrings;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.text.ParsePosition;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -8,7 +11,26 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Application {
     public static void main(String[] args) {
         //numbers();
-        atomicInt();
+        //atomicInt();
+        //formatValues();
+        decimalFormat();
+    }
+
+    private static void decimalFormat() {
+        String pattern ="###,###.###";
+        NumberFormat numberFormat = new DecimalFormat(pattern);
+        numberFormat.setMaximumFractionDigits(2);
+        String test = numberFormat.format(1234567890.123);
+        numberFormat.parse("10.20",new ParsePosition(2));
+        System.out.println(test);
+    }
+
+    private static void formatValues() {
+        System.out.format("The value is %s",10);
+        System.out.format("The value is %d",10);
+        System.out.format("The value is %f",10.5f);
+        System.out.printf("Demo Program %s","Hello");
+        System.out.format("The data is %s","Hello");
     }
 
     private static void atomicInt() {
