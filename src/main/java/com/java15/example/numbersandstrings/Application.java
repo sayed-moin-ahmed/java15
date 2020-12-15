@@ -15,7 +15,8 @@ public class Application {
         //atomicInt();
         //formatValues();
         //decimalFormat();
-        beyondBasicArithmetic();
+        //beyondBasicArithmetic();
+        stringSplitDemo();
     }
 
     public  static  void beyondBasicArithmetic(){
@@ -98,6 +99,25 @@ public class Application {
         String.format("The value is %b",true);
         System.out.format("The value is %b",true);
         System.out.printf("The value is %b",true);
+    }
+
+    public static void stringSplitDemo(){
+        String anotherPalindrome = "Niagara. O roar again!";
+        char aChar = anotherPalindrome.charAt(9);
+        System.out.println("0-3: "+anotherPalindrome.substring(0,3));
+        System.out.println("9: "+anotherPalindrome.substring(9));
+        for(var str : anotherPalindrome.split(" ")){
+            System.out.println("Split: "+str);
+        }
+
+        for(var str : anotherPalindrome.split(" ",2)){
+            System.out.println("Split with limit: "+str);
+        }
+        var str = "Hello! This is world.txt";
+        System.out.println(str.endsWith(".txt"));
+        System.out.println(str.startsWith("Hello"));
+        System.out.println(str.compareTo("Hello"));
+        System.out.println(str.matches("This is world"));
     }
 
 
