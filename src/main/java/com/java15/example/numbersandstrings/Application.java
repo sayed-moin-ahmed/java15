@@ -13,7 +13,20 @@ public class Application {
         //numbers();
         //atomicInt();
         //formatValues();
-        decimalFormat();
+        //decimalFormat();
+        beyondBasicArithmetic();
+
+    }
+
+    public  static  void beyondBasicArithmetic(){
+        System.out.println(Math.cos(10));
+        System.out.println(Math.ceil(10.10));
+        System.out.println(Math.floor(10.10));
+        System.out.println(Math.rint(10));
+        System.out.println(Math.round(10.11));
+        System.out.println(Math.min(10.11,10.12));
+        System.out.println(Math.max(10.11,10.12));
+        System.out.print(Math.random());
     }
 
     private static void decimalFormat() {
