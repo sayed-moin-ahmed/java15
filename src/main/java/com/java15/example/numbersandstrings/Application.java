@@ -3,6 +3,7 @@ package com.java15.example.numbersandstrings;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.ParsePosition;
+import java.util.Formatter;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -15,7 +16,6 @@ public class Application {
         //formatValues();
         //decimalFormat();
         beyondBasicArithmetic();
-
     }
 
     public  static  void beyondBasicArithmetic(){
@@ -89,4 +89,17 @@ public class Application {
         System.out.println("Parse Int::"+Integer.parseInt("23"));
         System.out.println("Value Of::"+Integer.valueOf("23"));
     }
+
+    public static void stringDemo(){
+        char[] helloArray = {'h','e','l','l','o'};
+        String helloString = new String(helloArray);
+        System.out.println(helloString);
+        System.out.println(helloString.length());
+        String.format("The value is %b",true);
+        System.out.format("The value is %b",true);
+        System.out.printf("The value is %b",true);
+    }
+
+
+
 }
