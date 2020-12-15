@@ -118,6 +118,14 @@ public class Application {
         System.out.println(str.startsWith("Hello"));
         System.out.println(str.compareTo("Hello"));
         System.out.println(str.matches("This is world"));
+
+        StringBuilder builder = new StringBuilder();
+        builder.append("Hello");
+        builder.append("  world");
+        builder.insert(6,"my");
+        System.out.println(builder.toString());
+        builder.reverse();
+        System.out.println(builder.toString());
     }
 
 
