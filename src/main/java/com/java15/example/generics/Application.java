@@ -4,6 +4,7 @@ import com.java15.example.classesobjects.Person;
 
 import java.time.LocalDate;
 import java.util.Comparator;
+import java.util.List;
 import java.util.Map;
 
 public class Application {
@@ -11,7 +12,9 @@ public class Application {
         //genericSingleTypeDemo();
         //genericKeyValueDemo();
         //res();
-        multipleBounds();
+        //multipleBounds();
+        subTyping(List.of(new Demo(), new Demo()));
+        //subTyping(List.of(new Demo1(),new Demo1()));//Incompatible bounds
     }
 
     public static void res(){
@@ -111,4 +114,11 @@ public class Application {
         System.out.println(interface1.show());
         System.out.println(interface2.show());
     }
+
+    public static void subTyping(List<Demo> list){
+        for(Demo demo : list){
+            System.out.println(demo);
+        }
+    }
+
 }
