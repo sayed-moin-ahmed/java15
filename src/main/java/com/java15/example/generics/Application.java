@@ -4,14 +4,20 @@ import com.java15.example.classesobjects.Person;
 
 import java.time.LocalDate;
 import java.util.Comparator;
+import java.util.List;
 import java.util.Map;
 
+/**
+ * https://docs.oracle.com/javase/tutorial/java/generics/index.html
+ */
 public class Application {
     public static void main(String[] args) {
         //genericSingleTypeDemo();
         //genericKeyValueDemo();
         //res();
-        multipleBounds();
+        //multipleBounds();
+        subTyping(List.of(new Demo(), new Demo()));
+        //subTyping(List.of(new Demo1(),new Demo1()));//Incompatible bounds
     }
 
     public static void res(){
@@ -111,4 +117,17 @@ public class Application {
         System.out.println(interface1.show());
         System.out.println(interface2.show());
     }
+
+    public static void subTyping(List<Demo> list){
+        for(Demo demo : list){
+            System.out.println(demo);
+        }
+    }
+
+    static public void extendedSubTyping() {
+        PayloadList<String, String> payloadListStringString;
+        PayloadList<String, Integer> payloadListStringInteger;
+        PayloadList<String, Exception> payloadListStringException;
+    }
+
 }
