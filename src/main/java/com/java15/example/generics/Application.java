@@ -10,8 +10,9 @@ public class Application {
     public static void main(String[] args) {
         //genericSingleTypeDemo();
         //genericKeyValueDemo();
-        res();
-        }
+        //res();
+        multipleBounds();
+    }
 
     public static void res(){
         Pair<Integer, String> p1 = new Pair<>(1, "apple");
@@ -65,5 +66,49 @@ public class Application {
             return p1.getKey().equals(p2.getKey()) &&
                     p1.getValue().equals(p2.getValue());
         }
+    }
+
+    public <T extends Interface2 & Interface1> void show1(T type){
+        System.out.println(type.show());
+    }
+
+
+    public <T extends Demo1 , Interface2 , Interface1> void show2(T type){
+        System.out.println(type.show());
+    }
+
+    //
+    public <T extends Demo2 , Interface2 , Interface1> void show3(T type){
+        System.out.println(type.show());
+    }
+
+    public <T extends Demo & Interface2 & Interface1> void show4(T type){
+        System.out.println(type.show());
+    }
+
+    //
+    public <Demo2 extends Interface2 & Interface1> void show5(Demo2 type){
+        System.out.println(type.show());
+    }
+
+    public <T extends RecordDemo & Interface2 & Interface1> void show6(T type){
+        System.out.println(type.show());
+    }
+
+    public static void multipleBounds(){
+        Demo demo = new Demo();
+        Demo1 demo1 = new Demo1();
+        Demo2 demo2 = new Demo();
+        Demo2 demo2_1 = new Demo2();
+        Interface1 interface1 = new Demo1();
+        Interface2 interface2 = new Demo();
+        RecordDemo interfaceR = new RecordDemo();
+        new Application().show1(demo);
+        new Application().show1(demo1);
+        new Application().show3(demo2);
+        new Application().show4(demo);
+        new Application().show6(interfaceR);
+        System.out.println(interface1.show());
+        System.out.println(interface2.show());
     }
 }
