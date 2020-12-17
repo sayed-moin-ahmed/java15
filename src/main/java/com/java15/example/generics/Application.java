@@ -7,6 +7,9 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * https://docs.oracle.com/javase/tutorial/java/generics/index.html
+ */
 public class Application {
     public static void main(String[] args) {
         //genericSingleTypeDemo();
@@ -119,6 +122,12 @@ public class Application {
         for(Demo demo : list){
             System.out.println(demo);
         }
+    }
+
+    static public void extendedSubTyping() {
+        PayloadList<String, String> payloadListStringString;
+        PayloadList<String, Integer> payloadListStringInteger;
+        PayloadList<String, Exception> payloadListStringException;
     }
 
 }
