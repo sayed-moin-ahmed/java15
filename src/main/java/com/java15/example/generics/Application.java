@@ -20,9 +20,10 @@ public class Application {
         //subTyping(List.of(new Demo1(),new Demo1()));//Incompatible bounds
         //unboundedWildcardDemo();
         // objectStream(strings);//List<String> -> List<Obect>(invalid)
-        upperboundedWildcard(List.of(1,2,3));
-        upperboundedWildcard(List.of(1.1,2.2,3.3));
+        //upperboundedWildcard(List.of(1,2,3));
+        //upperboundedWildcard(List.of(1.1,2.2,3.3));
         //upperboundedWildcard(List.of("Hello","Hi")); //List<String -> List<? extends Number> incompatible
+        lowerBoundedWildcard(new ArrayList<>());
     }
 
     private static void unboundedWildcardDemo() {
@@ -143,6 +144,13 @@ public class Application {
         PayloadList<String, String> payloadListStringString;
         PayloadList<String, Integer> payloadListStringInteger;
         PayloadList<String, Exception> payloadListStringException;
+    }
+
+    public static void lowerBoundedWildcard(List<? super Integer> list) {
+        for (int i = 1; i <= 10; i++) {
+            list.<Number>add(i);
+        }
+        System.out.println(list);
     }
 
     static public void unboundedWildcard(List<?> list){
