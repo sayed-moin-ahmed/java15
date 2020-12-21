@@ -15,14 +15,23 @@ public class Application {
         //genericKeyValueDemo();
         //res();
         //multipleBounds();
-       // subTyping(List.of(new Demo(), new Demo()));
+        // subTyping(List.of(new Demo(), new Demo()));
         //subTyping(List.of(new Demo1(),new Demo1()));//Incompatible bounds
+        //unboundedWildcardDemo();
+        // objectStream(strings);//List<String> -> List<Obect>(invalid)
+        upperboundedWildcard(List.of(1,2,3));
+        upperboundedWildcard(List.of(1.1,2.2,3.3));
+        //upperboundedWildcard(List.of("Hello","Hi")); //List<String -> List<? extends Number> incompatible
+    }
+
+    private static void unboundedWildcardDemo() {
         List<String> strings = new ArrayList<>();
         strings.add("Hello");
         strings.add("Hi");
         strings.add("Dear");
         unboundedWildcard(strings);
-       // objectStream(strings);//List<String> -> List<Obect>(invalid)
+        List<Integer> li = Arrays.asList(1, 2, 3);
+        unboundedWildcard(li);
     }
 
     public static void res(){
@@ -137,6 +146,11 @@ public class Application {
 
     static public void unboundedWildcard(List<?> list){
         System.out.println("unboundedWildcard::"+list);
+        list.stream().forEach(System.out::println);
+    }
+
+    static public void upperboundedWildcard(List<? extends Number> list){
+        System.out.println("upperboundedWildcard::"+list);
         list.stream().forEach(System.out::println);
     }
 
