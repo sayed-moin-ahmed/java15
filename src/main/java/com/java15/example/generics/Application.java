@@ -8,6 +8,7 @@ import java.util.*;
 
 /**
  * https://docs.oracle.com/javase/tutorial/java/generics/index.html
+ * https://stackoverflow.com/questions/6008241/what-is-the-difference-between-e-t-and-for-java-generics
  */
 public class Application {
     public static void main(String[] args) {
@@ -159,4 +160,24 @@ public class Application {
         System.out.println("ObjectStream::"+list);
         list.stream().forEach(System.out::println);
     }
+
+    /**
+     * Difference between T & ?
+     */
+
+    public <T> void foo1(List<T> listOfAnyType) { // T can be used for class and methods
+
+    }
+    public void foo2(List<?> listOfAnyType) { // <?> used only for parameters and variable declartions
+        List<? extends Integer> intList = new ArrayList<>();
+        List<? extends Number>  numList = intList;  // OK. List<? extends Integer> is a subtype of List<? extends Number>
+
+        //below are incompatible
+        /*List<Demo1> lb = new ArrayList<>();
+        List<Demo> la = lb;*/
+    }  // pass a List of any type
+
+    /*public <?> void foo3(? someType) {//unexpected wildcard
+
+    } */ // error. Must use type params here
 }
