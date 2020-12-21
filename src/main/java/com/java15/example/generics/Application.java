@@ -180,4 +180,16 @@ public class Application {
     /*public <?> void foo3(? someType) {//unexpected wildcard
 
     } */ // error. Must use type params here
+
+    void foo(List<?> i) {
+       // i.set(0, i.get(0));
+        fooHelper(i);
+    }
+
+    //https://docs.oracle.com/javase/tutorial/java/generics/capture.html
+    // Helper method created so that the wildcard can be captured
+    // through type inference.
+    private <T> void fooHelper(List<T> l) {
+        l.set(0, l.get(0));
+    }
 }
