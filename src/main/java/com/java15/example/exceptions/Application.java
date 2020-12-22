@@ -1,5 +1,7 @@
 package com.java15.example.exceptions;
 
+import java.util.List;
+
 /**
  * https://docs.oracle.com/javase/tutorial/essential/exceptions/catchOrDeclare.html
  */
@@ -7,7 +9,7 @@ public class Application {
     public static void main(String[] args) {
         // exceptionCallStack();
         // tryCatch();
-        System.out.println(returnStatementWithExceptionDemo());
+        continueStatmentFinally();
     }
 
     //Catching More Than One Type of Exception with One Exception Handler
@@ -70,4 +72,32 @@ public class Application {
         Caller caller = new Caller();
         caller.call();
     }
+
+    private static void continueStatmentFinally(){
+        List<Integer> list = List.of(1,2,3,4,5,6,7,8,9,0);
+        //break,continue, return (value) is not allowed in internal loops
+        list.forEach(e->{
+            if(5==e){
+                return ;
+            }
+        });
+
+        System.out.println("Loop external");
+        int counter = 0;
+        try {
+            for(Integer e : list){
+                if(5==e){
+                    continue;
+                }
+                counter++;
+                throw new ArrayIndexOutOfBoundsException("");
+            }
+        }catch (ArrayIndexOutOfBoundsException exception){
+            System.out.println("continue::catch");
+        }
+        System.out.println("Counter::"+counter);
+    }
+
+
+
 }
