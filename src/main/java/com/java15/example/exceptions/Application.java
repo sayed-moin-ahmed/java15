@@ -1,5 +1,8 @@
 package com.java15.example.exceptions;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -96,6 +99,12 @@ public class Application {
             System.out.println("continue::catch");
         }
         System.out.println("Counter::"+counter);
+    }
+
+    static String readFirstLineFromFile(String path) throws IOException {
+        try (BufferedReader br =  new BufferedReader(new FileReader(path))) {
+            return br.readLine();
+        }
     }
 
 
