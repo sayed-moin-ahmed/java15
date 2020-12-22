@@ -9,10 +9,12 @@ public class Application {
         tryCatch();
     }
 
+    //Catching More Than One Type of Exception with One Exception Handler
     private static void tryCatch() {
         try{
             exceptionCallStack();
-        }catch (Throwable throwable){
+            throw new ArrayIndexOutOfBoundsException("Array Exception");
+        }catch (ArrayIndexOutOfBoundsException|IllegalArgumentException throwable){
             System.out.println(throwable.getMessage());
         }
     }
