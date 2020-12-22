@@ -101,6 +101,12 @@ public class Application {
         System.out.println("Counter::"+counter);
     }
 
+    /**
+     * https://docs.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html
+     * @param path
+     * @return
+     * @throws IOException
+     */
     static String readFirstLineFromFile(String path) throws IOException {
         try (BufferedReader br =  new BufferedReader(new FileReader(path))) {
             return br.readLine();
