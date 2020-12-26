@@ -20,18 +20,23 @@ public class Application{
             Thread.sleep(4000);
             //Print a message
             System.out.println(importantInfo[i]);
-            if(Thread.interrupted()) //works of current thread(static)
+            if(Thread.interrupted()) //works of current thread(static) clear interrupt status
                 return;
         }
     }
 
-    private static void instanceInterrupt() {
+    private static void instanceInterrupt() throws InterruptedException {
         while(true) {
-            Thread thread = new HelloThread();
+            Thread thread = new Thread(new HelloThread());
             thread.start();
-            System.out.println("Thread Name::"+thread.getName()+" Thread interrupted::"+thread.isInterrupted()); //instance interruption check
+            if(!thread.isInterrupted())
+                System.out.println("Thread Name::"+thread.getName()+" not interrupted."); //instance interruption check
+            JoinThreadClass joinThreadClass = new JoinThreadClass(thread.getName());
+            joinThreadClass.start();
+            joinThreadClass.join();
             thread.interrupt();
-            System.out.println("Thread Name::"+thread.getName()+" Thread interrupted::"+thread.isInterrupted()); //instance interruption check
+            if(thread.isInterrupted()) //works of current thread(static)
+                System.out.println("Thread Name::"+thread.getName()+" is interrupted."); //instance interruption check
         }
     }
 }
