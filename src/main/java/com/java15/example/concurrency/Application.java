@@ -27,11 +27,13 @@ public class Application{
 
     private static void instanceInterrupt() throws InterruptedException {
         while(true) {
-            Thread thread = new HelloThread();
+            Thread thread = new Thread(new HelloThread());
             thread.start();
             if(!thread.isInterrupted())
                 System.out.println("Thread Name::"+thread.getName()+" not interrupted."); //instance interruption check
-            thread.join();
+            JoinThreadClass joinThreadClass = new JoinThreadClass(thread.getName());
+            joinThreadClass.start();
+            joinThreadClass.join();
             thread.interrupt();
             if(thread.isInterrupted()) //works of current thread(static)
                 System.out.println("Thread Name::"+thread.getName()+" is interrupted."); //instance interruption check
