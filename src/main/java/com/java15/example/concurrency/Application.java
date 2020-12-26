@@ -4,7 +4,16 @@ public class Application{
 
     public static void main(String[] args) throws InterruptedException {
         //staticInterrupt();
-        instanceInterrupt();
+        //instanceInterrupt();
+        Counter counter = new Counter();
+        SynchronizedCounter synchronizedCounter = new SynchronizedCounter();
+
+        while(true){
+            new Thread(new IncrementCounterRunnable(counter)).start();
+            new Thread(new DecrementCounterRunnable(counter)).start();
+            new Thread(new IncrementCounterRunnable(synchronizedCounter)).start();
+            new Thread(new DecrementCounterRunnable(synchronizedCounter)).start();
+        }
     }
 
     private static void staticInterrupt() throws InterruptedException {
