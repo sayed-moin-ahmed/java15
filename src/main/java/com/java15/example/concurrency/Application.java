@@ -1,10 +1,41 @@
 package com.java15.example.concurrency;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Application{
 
     public static void main(String[] args) throws InterruptedException {
         //staticInterrupt();
-        instanceInterrupt();
+        //instanceInterrupt();
+        //interruptDemo();
+        //producerConsumer();
+        List<String> addresses = new ArrayList<>();
+        addresses.add("US");
+        addresses.add("UK");
+        ImmutableClass immutableClass = ImmutableClass.getInstance("sam",31,addresses);
+        System.out.println(immutableClass);
+        addresses.add("Sweden");
+        System.out.println(immutableClass);
+        System.out.println(addresses);
+    }
+
+    private static void producerConsumer() {
+        Data drop = new Data();
+        (new Thread(new DataProducer(drop))).start();
+        (new Thread(new DataConsumer(drop))).start();
+    }
+
+    private static void interruptDemo() {
+        Counter counter = new Counter();
+        SynchronizedCounter synchronizedCounter = new SynchronizedCounter();
+
+        while(true){
+            new Thread(new IncrementCounterRunnable(counter)).start();
+            new Thread(new DecrementCounterRunnable(counter)).start();
+            new Thread(new IncrementCounterRunnable(synchronizedCounter)).start();
+            new Thread(new DecrementCounterRunnable(synchronizedCounter)).start();
+        }
     }
 
     private static void staticInterrupt() throws InterruptedException {
