@@ -23,7 +23,12 @@ public class Application {
         //upperboundedWildcard(List.of(1,2,3));
         //upperboundedWildcard(List.of(1.1,2.2,3.3));
         //upperboundedWildcard(List.of("Hello","Hi")); //List<String -> List<? extends Number> incompatible
-        lowerBoundedWildcard(new ArrayList<>());
+        //lowerBoundedWildcard(new ArrayList<>());
+        SuperCls superCls = new SubCls();
+        superCls.getType(11);
+        superCls.show("Hello");
+        superCls.show(11);
+
     }
 
     private static void unboundedWildcardDemo() {
