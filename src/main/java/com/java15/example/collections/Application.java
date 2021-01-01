@@ -14,7 +14,41 @@ public class Application {
     public static void main(String[] args) {
         //collectionInterfaceDemo();
 
-        aggregationExample();
+        //aggregationExample();
+
+        extracted();
+
+    }
+
+    /**
+     * The Collections framework has always provided a number of so-called "bulk operations" as part of its API.
+     * These include methods that operate on entire collections, such as containsAll, addAll, removeAll, etc.
+     * Do not confuse those methods with the aggregate operations that were introduced in JDK 8.
+     * The key difference between the new aggregate operations and the existing bulk operations (containsAll, addAll, etc.) is that the old versions are all mutative, meaning that they all modify the underlying collection.
+     * In contrast, the new aggregate operations do not modify the underlying collection.
+     * When using the new aggregate operations and lambda expressions, you must take care to avoid mutation so as not to introduce problems in the future, should your code be run later from a parallel stream.
+     */
+    private static void extracted() {
+        int counter = 0;
+        List<Integer> list =  new ArrayList<>();
+        while (counter<10){
+            list.add(counter++);
+            new Thread(new Demo(list)).start();
+        }
+    }
+
+    static final class Demo implements Runnable{
+
+        private final Collection<?> collection;
+
+        private Demo(Collection<?> collection){
+            this.collection = collection;
+        }
+
+        @Override
+        public void run() {
+            collection.stream().forEach(System.out::println);
+        }
     }
 
     private static void aggregationExample() {
