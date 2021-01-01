@@ -1,23 +1,73 @@
 package com.java15.example.collections;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+/**
+ * https://docs.oracle.com/javase/tutorial/collections/interfaces/collection.html
+ */
 public class Application {
 
     public static void main(String[] args) {
+        List<Integer> list = getData();
         //collectionInterfaceDemo();
-
         //aggregationExample();
+        //extracted();
+        iteratorDemo(list);
+        forEachDemo(list);
+        while (true) {
+            Thread thread = new Thread(new RemoveDemo(list));
+            thread.setName(thread.getName());
+            thread.start();
+            stringConsumer.accept(thread.getName());
+        }
+    }
 
-        extracted();
+    static class RemoveDemo implements Runnable{
 
+        private final List<Integer> list;
+        RemoveDemo(List<Integer> list){
+            this.list = list;
+        }
+
+        @Override
+        public void run() {
+            var iterator = list.iterator();
+            while (iterator.hasNext()){
+                var value = iterator.next();
+                if(Objects.nonNull(value)) {
+                    iterator.remove();
+                    stringConsumer.accept("Removed..."+ Thread.currentThread().getName());
+                }
+            }
+        }
+    }
+
+    private static List<Integer> getData() {
+        List<Integer> list = new ArrayList<>();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        list.add(4);
+        list.add(5);
+        list.add(6);
+        list.add(7);
+        return list;
+    }
+
+    //can't remove element
+    private static void forEachDemo(List list) {
+        List.of(1,2,3,4).forEach(System.out::println);
+        for(var v : list){
+            System.out.println("Result::"+v);
+        }
+    }
+
+    private static void iteratorDemo(List<Integer> list){
+        list.removeIf(value -> 3 == value);
     }
 
     /**
