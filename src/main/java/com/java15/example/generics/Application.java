@@ -24,11 +24,31 @@ public class Application {
         //upperboundedWildcard(List.of(1.1,2.2,3.3));
         //upperboundedWildcard(List.of("Hello","Hi")); //List<String -> List<? extends Number> incompatible
         //lowerBoundedWildcard(new ArrayList<>());
+        //hierarchy();
+        //subtyping();
+    }
+
+    private static void hierarchy() {
         SuperCls superCls = new SubCls();
         superCls.getType(11);
         superCls.show("Hello");
         superCls.show(11);
+    }
 
+    private static void subtyping() {
+        List<?> list  = new ArrayList<>();
+        List<? extends Number> integers1 = List.of(1,2);
+        List<? extends Integer> integers2 = List.of(1,2);
+        List<Integer> integers3 = List.of(1);
+        List<? super Integer> integer4 = List.of(2,3);
+        List<? super Number> integer5 = List.of(5,6);
+        List<Number> integer6 =  List.of(89);
+        integer5 = integer6;
+        integer4 = integer5;
+        list = integer4;
+        integers2 = integers3;
+        integers1=integers2;
+        list = integers1;
     }
 
     private static void unboundedWildcardDemo() {
@@ -166,6 +186,21 @@ public class Application {
     static public void upperboundedWildcard(List<? extends Number> list){
         System.out.println("upperboundedWildcard::"+list);
         list.stream().forEach(System.out::println);
+    }
+
+    /**
+     * Below Example give error like "Wrong number of type arguments: 2; required: 1"
+     * @param list
+     */
+    /*static public void upperboundedWildcard1(List<? extends Number ,String> list){
+        System.out.println("upperboundedWildcard::"+list);
+        list.stream().forEach(System.out::println);
+    }*/
+
+    public static <T> void addNumbers(List<? super Integer> list) {
+        for (int i = 1; i <= 10; i++) {
+            list.add(i);
+        }
     }
 
 
