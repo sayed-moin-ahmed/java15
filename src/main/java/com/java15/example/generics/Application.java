@@ -26,6 +26,16 @@ public class Application {
         //lowerBoundedWildcard(new ArrayList<>());
         //hierarchy();
         //subtyping();
+        //wildcardGuideLines();
+    }
+
+    private static void wildcardGuideLines() {
+        List<? extends Number> in = List.of(1,2,3,4.5,5.6f,9l,0x45);
+        List<? super Integer> out = new ArrayList<>();
+        WildcardGuidelines wildcardGuidelines = new WildcardGuidelines();
+        wildcardGuidelines.copy(in,out);
+        System.out.println(out);
+        System.out.println(0x45);
     }
 
     private static void hierarchy() {
