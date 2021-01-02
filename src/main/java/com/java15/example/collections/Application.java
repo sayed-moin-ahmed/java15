@@ -12,30 +12,79 @@ import java.util.stream.Collectors;
 public class Application {
 
     public static void main(String[] args) {
-        List<Integer> list = getData();
+        List<Integer> ints = getInts();
+        List<String> strings = getStrings();
         //collectionInterfaceDemo();
         //aggregationExample();
         //extracted();
-        iteratorDemo(list);
-        forEachDemo(list);
+        //iteratorDemo(ints);
+        //forEachDemo(strings);
+        //iteratorInThread(ints, strings);
+        collectionsExample(strings);
+    }
+
+    private static void collectionsExample(List<String> strings) {
+        var val = getInts().removeAll(Collections.singleton(7));
+        System.out.println(getInts().removeAll(Collections.singletonList(7)));
+        getInts().stream().forEach(intConsumer);
+        Collections.reverse(strings);
+        strings.stream().forEach(stringConsumer);
+        Collections.sort(strings,Comparator.naturalOrder());
+        strings.stream().forEach(stringConsumer);
+        try {
+            Collections.checkedCollection(getRaw(), String.class).forEach(stringConsumer);
+        }catch (ClassCastException classCastException){
+            System.out.println(classCastException.getMessage());
+        }
+        Collections.emptyList().stream().forEach(objectConsumer);
+        var emptyList = Collections.emptyList();
+        emptyList.add(1);
+        emptyList.add(2);
+        emptyList.stream().forEach(objectConsumer);
+    }
+
+    private static void iteratorInThread(List<Integer> ints, List<String> strings) {
         while (true) {
-            Thread thread = new Thread(new RemoveDemo(list));
+            Thread thread = new Thread(new RemoveDemo(ints, strings));
             thread.setName(thread.getName());
             thread.start();
             stringConsumer.accept(thread.getName());
         }
     }
 
+    private static List<String> getStrings() {
+        List<String> strs = new ArrayList<>();
+        strs.add("Hello");
+        strs.add("Hi");
+        strs.add("How");
+        strs.add("are");
+        strs.add("you");
+        strs.add("?");
+        return strs;
+    }
+
+    private static List getRaw() {
+        var val = new ArrayList();
+        val.add("Hello");
+        val.add("Hi");
+        val.add(1);
+        val.add(2.2);
+        val.add(2.3f);
+        return val;
+    }
+
     static class RemoveDemo implements Runnable{
 
-        private final List<Integer> list;
-        RemoveDemo(List<Integer> list){
-            this.list = list;
+        private final List<Integer> ints;
+        private final List<String> strings;
+        RemoveDemo(final List<Integer> ints, final List<String> strings){
+            this.ints = ints;
+            this.strings = strings;
         }
 
         @Override
         public void run() {
-            var iterator = list.iterator();
+            var iterator = ints.iterator();
             while (iterator.hasNext()){
                 var value = iterator.next();
                 if(Objects.nonNull(value)) {
@@ -46,7 +95,7 @@ public class Application {
         }
     }
 
-    private static List<Integer> getData() {
+    private static List<Integer> getInts() {
         List<Integer> list = new ArrayList<>();
         list.add(1);
         list.add(2);
@@ -54,6 +103,12 @@ public class Application {
         list.add(4);
         list.add(5);
         list.add(6);
+        list.add(7);
+        list.add(8);
+        list.add(9);
+        list.add(0);
+        list.add(7);
+        list.add(7);
         list.add(7);
         return list;
     }
@@ -108,6 +163,7 @@ public class Application {
         stringConsumer.accept(List.of(1,2,3,4,5,6,7,8,9,0).stream().map(Object::toString).collect(Collectors.joining(",")));
     }
 
+    static Consumer<Object> objectConsumer = System.out::println;
     static Consumer<String> stringConsumer = System.out::println;
     static Consumer<Integer> intConsumer = System.out::println;
 
