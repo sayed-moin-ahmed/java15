@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
  */
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         List<Integer> ints = getInts();
         List<String> strings = getStrings();
         //collectionInterfaceDemo();
@@ -23,7 +23,7 @@ public class Application {
         collectionsExample(strings);
     }
 
-    private static void collectionsExample(List<String> strings) {
+    private static void collectionsExample(List<String> strings) throws InterruptedException {
         var val = getInts().removeAll(Collections.singleton(7));
         System.out.println(getInts().removeAll(Collections.singletonList(7)));
         getInts().stream().forEach(intConsumer);
@@ -60,6 +60,34 @@ public class Application {
         Iterator<Integer> iterator1 = enumeration1.asIterator();
         while (iterator1.hasNext()){
             intConsumer.accept(iterator1.next());
+        }
+        try {
+            List<String> nStrings = Collections.unmodifiableList(strings);
+            nStrings.add("add");
+        }catch (UnsupportedOperationException unsupportedOperationException){
+            stringConsumer.accept(unsupportedOperationException.getMessage());
+        }
+        stringConsumer.accept("Synchronized...");
+        List<String> syncStrings = Collections.synchronizedList(strings);
+        for(int i=0;i<5;i++){
+            new Thread(new StringManipulation(syncStrings)).start();
+        }
+        Thread.sleep(1000);
+        syncStrings.stream().forEach(stringConsumer);
+    }
+
+    static class StringManipulation implements Runnable{
+
+        final private List<String> list;
+
+        StringManipulation(final List<String> list){
+            this.list = list;
+        }
+
+        @Override
+        public void run() {
+            for(int i=0;i<5;i++)
+                list.add(Integer.toString(i));
         }
     }
 
