@@ -37,10 +37,30 @@ public class Application {
             System.out.println(classCastException.getMessage());
         }
         Collections.emptyList().stream().forEach(objectConsumer);
-        var emptyList = Collections.emptyList();
-        emptyList.add(1);
-        emptyList.add(2);
-        emptyList.stream().forEach(objectConsumer);
+        try {
+            var emptyList = Collections.emptyList();
+            emptyList.add(1);
+            emptyList.add(2);
+            emptyList.stream().forEach(objectConsumer);
+        }catch (UnsupportedOperationException unsupportedOperationException){
+            stringConsumer.accept(unsupportedOperationException.getMessage());
+        }
+        Enumeration<Integer> enumeration = Collections.enumeration(getInts());
+        stringConsumer.accept("Enumeration...");
+        while (enumeration.hasMoreElements()){
+            intConsumer.accept(enumeration.nextElement());
+        }
+        stringConsumer.accept("Enumeration...Iterator ...consumed");
+        Iterator<Integer> iterator = enumeration.asIterator();
+        while (iterator.hasNext()){
+            intConsumer.accept(iterator.next());
+        }
+        stringConsumer.accept("Enumeration...Iterator ...new");
+        Enumeration<Integer> enumeration1 = Collections.enumeration(getInts());
+        Iterator<Integer> iterator1 = enumeration1.asIterator();
+        while (iterator1.hasNext()){
+            intConsumer.accept(iterator1.next());
+        }
     }
 
     private static void iteratorInThread(List<Integer> ints, List<String> strings) {
