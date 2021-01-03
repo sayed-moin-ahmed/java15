@@ -23,9 +23,21 @@ public class Application {
         //iteratorInThread(ints, strings);
         //collectionsExample(strings);
         //setDemo();
-        //getTreeSetCustomers().stream().forEach(objectConsumer);
-        //getLinkedHashSetCustomers().stream().forEach(objectConsumer);
-        //getHashSetCustomers().stream().forEach(objectConsumer);
+        listDemo();
+    }
+
+    private static void listDemo() {
+        getArrayList().stream().forEach(objectConsumer);
+    }
+
+    private static List<?> getArrayList(){
+        List<Customer> customers = new ArrayList<>();
+        customers.add(new Customer(1,"Hello"));
+        customers.add(new Customer(1,"Hello"));
+        customers.add(new Customer(2,"Hi"));
+        customers.add(2,new Customer(5,"Test"));
+        customers.stream().peek(objectConsumer).map(Customer::getName).forEach(stringConsumer); // look into peek method and its behaviour
+        return customers;
     }
 
     private static void setDemo(){
@@ -46,6 +58,9 @@ public class Application {
         persons.stream().collect(Collectors.toSet());
         Set<String> personNames = persons.stream().map(Person::getName).collect(Collectors.toCollection(TreeSet::new));
         personNames.forEach(stringConsumer);
+        //getTreeSetCustomers().stream().forEach(objectConsumer);
+        //getLinkedHashSetCustomers().stream().forEach(objectConsumer);
+        //getHashSetCustomers().stream().forEach(objectConsumer);
     }
 
     /**
