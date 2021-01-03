@@ -1,5 +1,6 @@
 package com.java15.example.collections;
 
+
 import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -20,7 +21,128 @@ public class Application {
         //iteratorDemo(ints);
         //forEachDemo(strings);
         //iteratorInThread(ints, strings);
-        collectionsExample(strings);
+        //collectionsExample(strings);
+        setDemo();
+    }
+
+    private static void setDemo(){
+        Collection<Person> persons = getPersons();
+        Person person  = new Person("fan",22);
+        objectConsumer.accept(persons.contains(person));
+        objectConsumer.accept(persons.remove(person));
+        Iterator it = persons.stream().iterator();
+        while(it.hasNext()){
+            objectConsumer.accept(it.next());
+        }
+        stringConsumer.accept("parallel::foreach");
+        persons.stream().parallel().forEach(objectConsumer);
+        stringConsumer.accept("spliterator");
+        persons.spliterator().tryAdvance(objectConsumer);
+        stringConsumer.accept("forEachRemaining");
+        persons.spliterator().forEachRemaining(objectConsumer);
+        persons.stream().collect(Collectors.toSet());
+
+
+        Set<String> personNames = persons.stream().map(Person::getName).collect(Collectors.toCollection(TreeSet::new));
+        personNames.forEach(stringConsumer);
+    }
+
+    private static Collection<Person> getPersons() {
+        Set<Person> persons = new HashSet<>();
+
+        persons.add(new Person("sam",22));
+        persons.add(new Person("mas",22));
+        persons.add(new Person("rock",52));
+        persons.add(new Person("mess",52));
+        persons.add(new Person("fan",22));
+        return persons;
+    }
+
+    private static Collection<Person> getLinkedHashSetPersons() {
+        Set<Person> persons = new LinkedHashSet<>();
+        persons.add(new Person("sam",22));
+        persons.add(new Person("mas",22));
+        persons.add(new Person("rock",52));
+        persons.add(new Person("mess",52));
+        persons.add(new Person("fan",22));
+        return persons;
+    }
+    private static Collection<Person> getListPersons() {
+        List<Person> persons = new ArrayList<>();
+        persons.add(new Person("sam",22));
+        persons.add(new Person("mas",22));
+        persons.add(new Person("rock",52));
+        persons.add(new Person("mess",52));
+        persons.add(new Person("fan",22));
+        System.out.println(persons.get(0));
+        return persons;
+    }
+
+
+    static final class Person implements Comparable,Comparator{
+
+        final private String name;
+        final private int age;
+
+        public Person(String name, int age) {
+            this.name = name;
+            this.age = age;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public int getAge() {
+            return age;
+        }
+
+        @Override
+        public String toString() {
+            return "Person{" +
+                    "name='" + name + '\'' +
+                    ", age=" + age +
+                    '}';
+        }
+
+        @Override
+        public int compareTo(Object o) {
+            if(o instanceof Person person) {
+                if (person.getAge() == this.getAge() && 0 == person.getName().compareTo(name))
+                    return 0;
+                else if (person.getAge() > this.getAge() && 1 == person.getName().compareTo(name)) {
+                    return 1;
+                } else
+                    return -1;
+            }else
+                throw new IllegalArgumentException("Not an instance of Person.");
+        }
+
+        @Override
+        public int compare(Object o1, Object o2) {
+            if(o1 instanceof Person person1 && o2 instanceof  Person person2) {
+                if (person1.getAge() == person2.getAge() && 0 == person1.getName().compareTo(person2.getName()))
+                    return 0;
+                else if (person1.getAge() > person2.getAge() && 1 == person1.getName().compareTo(person2.getName())) {
+                    return 1;
+                } else
+                    return -1;
+            }else
+                throw new IllegalArgumentException("Not an instance of Person.");
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            Person person = (Person) o;
+            return age == person.age && Objects.equals(name, person.name);
+        }
+
+        @Override
+        public int hashCode() {
+            return name.length()+age;
+        }
     }
 
     private static void collectionsExample(List<String> strings) throws InterruptedException {
