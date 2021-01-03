@@ -27,7 +27,14 @@ public class Application {
     }
 
     private static void listDemo() {
+        Comparator comparator = Comparator.comparing(Customer::getName).thenComparing(Customer::getId);
+        Customer customer = new Customer(1,"Hello");
+        getArrayList().sort(comparator);
         getArrayList().stream().forEach(objectConsumer);
+        objectConsumer.accept(getArrayList().contains(customer));
+        objectConsumer.accept(getArrayList().remove(customer));
+
+
     }
 
     private static List<?> getArrayList(){
