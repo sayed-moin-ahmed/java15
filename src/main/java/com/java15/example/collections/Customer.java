@@ -28,7 +28,7 @@ public class Customer implements Comparable{
                 '}';
     }
 
-  /*  @Override
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -39,7 +39,7 @@ public class Customer implements Comparable{
     @Override
     public int hashCode() {
         return Objects.hash(id, name);
-    }*/
+    }
 
     @Override
     public int compareTo(Object o) {
