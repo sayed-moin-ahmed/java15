@@ -3,6 +3,11 @@ package com.java15.example.concurrency;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Reference to be checked:
+ * https://docs.oracle.com/javase/specs/jls/se15/html/jls-17.html#jls-17.4.5
+ * https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/util/concurrent/package-summary.html
+ */
 public class Application{
 
     public static void main(String[] args) throws InterruptedException {
