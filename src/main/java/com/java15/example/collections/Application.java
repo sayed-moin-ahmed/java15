@@ -23,7 +23,21 @@ public class Application {
         //iteratorInThread(ints, strings);
         //collectionsExample(strings);
         //setDemo();
-        listDemo();
+        //listDemo();
+        queueDemo();
+    }
+
+    private static void queueDemo(){
+        Queue<String> queue = new PriorityQueue();
+        while (true){
+            new Thread(new QueueAddDemo(queue)).start();
+            new Thread(new QueueElementDemo(queue)).start();
+            new Thread(new QueueOfferDemo(queue)).start();
+            new Thread(new QueuePeekDemo(queue)).start();
+            new Thread(new QueuePollDemo(queue)).start();
+            new Thread(new QueueRemoveDemo(queue)).start();
+        }
+
     }
 
     private static void listDemo() {
@@ -33,8 +47,17 @@ public class Application {
         getArrayList().stream().forEach(objectConsumer);
         objectConsumer.accept(getArrayList().contains(customer));
         objectConsumer.accept(getArrayList().remove(customer));
-
-
+        ListIterator<?> listIterator = getArrayList().listIterator();
+        stringConsumer.accept("listiterator");
+        while (listIterator.hasNext()){
+            objectConsumer.accept(listIterator.next());
+        }
+        stringConsumer.accept("listiterator has previous");
+        while (listIterator.hasPrevious())
+            objectConsumer.accept(listIterator.previous());
+        stringConsumer.accept("sublist");
+        getArrayList().subList(1,2).forEach(objectConsumer);
+        Arrays.asList(1,2,3,4,5,6,7,8,9,0).stream().forEach(objectConsumer);
     }
 
     private static List<?> getArrayList(){
@@ -194,13 +217,10 @@ public class Application {
     }
 
     static class StringManipulation implements Runnable{
-
         final private List<String> list;
-
         StringManipulation(final List<String> list){
             this.list = list;
         }
-
         @Override
         public void run() {
             for(int i=0;i<5;i++)
