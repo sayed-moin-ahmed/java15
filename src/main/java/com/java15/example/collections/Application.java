@@ -24,7 +24,8 @@ public class Application {
         //collectionsExample(strings);
         //setDemo();
         //listDemo();
-        queueDemo();
+        //queueDemo();
+        getSortedSet();
     }
 
     private static void queueDemo(){
@@ -106,6 +107,23 @@ public class Application {
         //customers.add(null);
         return customers;
     }
+
+    private static void  getSortedSet(){
+        // how many words begin with each letter.
+        SortedSet<String> dictionary = new TreeSet<String>();
+        dictionary.add("ample");
+        dictionary.add("account");
+        dictionary.add("doorbell");
+        dictionary.add("pickle");
+        //int count = dictionary.subSet("doorbell", "pickle").size();
+        //System.out.println(count);
+        for (char ch = 'a'; ch <= 'z'; ) {
+            String from = String.valueOf(ch++);
+            String to = String.valueOf(ch);
+            System.out.println(from + ": " + dictionary.subSet(from, to).size());
+        }
+    }
+
     /**
      * Implement java.lang.Comparable for TreeSet.
      * Null is allowed in TreeSet.
