@@ -8,8 +8,8 @@
 # Each package has Application.java which is standalone class to demo the topics.
 
 
-##Microservices
-#https://github.com/eventuate-tram/eventuate-tram-core
-#https://github.com/eventuate-tram/eventuate-tram-examples-java-spring-todo-list
-#https://github.com/eventuate-tram/eventuate-tram-core-examples-basic
-#https://github.com/eventuate-tram/eventuate-tram-core-examples-basic
+## Microservices
+# https://github.com/eventuate-tram/eventuate-tram-core
+# https://github.com/eventuate-tram/eventuate-tram-examples-java-spring-todo-list
+# https://github.com/eventuate-tram/eventuate-tram-core-examples-basic
+# https://github.com/eventuate-tram/eventuate-tram-core-examples-basic
