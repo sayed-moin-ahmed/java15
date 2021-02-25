@@ -13,8 +13,26 @@ import java.util.stream.Stream;
 public class ExampleApplication {
 
 	public static void main(String[] args) {
+		int result = 0;
+		Set<String> opNames = new HashSet();
+		opNames.add("ADD");
+		opNames.add("SUB");
 
-		//extracted();
+		if(Objects.isNull(args) || 3 != args.length)
+			throw new IllegalArgumentException("Please enter the value like OperationName(ADD/SUB) value1 value2 : example ADD/SUB 3 4");
+		String operation = args[0].trim();
+		if(!opNames.contains(operation))
+			throw new IllegalArgumentException("Invalid operation put either ADD/SUB");
+		Integer value1 = Integer.valueOf(args[1]);
+		Integer value2 = Integer.valueOf(args[2]);
+		if("ADD".equals(operation)){
+			result = value1 + value2;
+		}
+		else if("SUB".equals(operation)){
+			result = value1 - value2;
+		}
+		System.out.println(result);
+
 	}
 
 	private static void extracted() {
