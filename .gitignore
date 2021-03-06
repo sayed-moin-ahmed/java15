@@ -26,3 +26,4 @@ hs_err_pid*
 *.xml
 *.lst
 .idea/*.*
+example.iml
