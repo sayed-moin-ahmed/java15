@@ -10,14 +10,25 @@ import static java.util.stream.Collectors.groupingBy;
 public class Test {
 
     public static void main(String[] args) {
-        //List<Apple>  apples = getData();
+        List<Apple>  apples = getData();
+       // beforeJava8(apples);
         //filterApples(apples,(Apple a) -> Colors.GREEN.equals(a.getColor())).stream().forEach(System.out::println);
-        //filterApples(apples,(Apple a) -> Colors.GREEN.equals(a.getColor())).stream().forEach(System.out::println);
-        //filterGroupApples(apples,(Apple a) -> Colors.RED.equals(a.getColor())).forEach((i,list) ->{System.out.println(i+""+list);});
-        //filterGroupApples(apples,(Apple a) -> {return true;}).forEach((i,list) ->{System.out.println(i+""+list);});
-        //minAppleByWeight(apples).ifPresent(System.out::println);
-        //maxAppleByWeight(apples).ifPresent(System.out::println);
-        getData1().forEach(System.out::println);
+        // filterApples(apples,(Apple a) -> Colors.GREEN.equals(a.getColor())).stream().forEach(System.out::println);
+        // filterGroupApples(apples,(Apple a) -> Colors.RED.equals(a.getColor())).forEach((i,list) ->{System.out.println(i+""+list);});
+        // filterGroupApples(apples,(Apple a) -> {return true;}).forEach((i,list) ->{System.out.println(i+""+list);});
+        // minAppleByWeight(apples).ifPresent(System.out::println);
+        // maxAppleByWeight(apples).ifPresent(System.out::println);
+        // getData1().forEach(System.out::println);
+    }
+
+    private static void beforeJava8(List<Apple> apples) {
+        final List<Apple> filteredApple = new ArrayList<>();
+        apples.forEach(e->
+        {
+            if(new CustomPredicateImpl().test(e))
+                filteredApple.add(e);
+        });
+        filteredApple.forEach(System.out::println);
     }
 
     static List<Apple> filterApples(List<Apple> inventory, Predicate<Apple> p) {
@@ -71,3 +82,18 @@ public class Test {
     }
 
 }
+
+interface CustomPredicate<T>{
+    boolean test(T t);
+}
+
+class CustomPredicateImpl implements CustomPredicate{
+
+    @Override
+    public boolean test(Object o) {
+        if(Colors.GREEN.equals(((Apple)o).getColor()))
+            return true;
+        return false;
+    }
+}
+
