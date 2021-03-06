@@ -7,6 +7,7 @@ import com.java15.example.java8inaction.Data;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.*;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -14,11 +15,20 @@ import java.util.stream.Collectors;
 import static java.util.stream.Collectors.groupingBy;
 
 public class Test {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ExecutionException, InterruptedException {
         List<Apple> apples = Data.getData();
         // beforeJava8(apples);
         //filter(apples,(Apple e) -> Colors.GREEN.equals(e.getColor())).forEach(System.out::println);
-        groupBy(apples,apple -> apple.getWeight()).forEach((i, list)->System.out.println(i+""+list));
+        // groupBy(apples,apple -> apple.getWeight()).forEach((i, list)->System.out.println(i+""+list));
+        executorService(()->{ int i=0; while(i<10){ i++;} return i;});
+    }
+
+
+    private static <V> void executorService(Callable<V> task) throws InterruptedException, ExecutionException {
+        ExecutorService executorService = Executors.newCachedThreadPool();
+        Future<V> threadName = executorService.submit(task);
+        System.out.println(threadName.get());
+        executorService.shutdown();
     }
 
     //More Generic
