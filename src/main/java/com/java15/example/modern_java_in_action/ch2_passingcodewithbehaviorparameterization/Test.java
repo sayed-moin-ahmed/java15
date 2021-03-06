@@ -1,8 +1,8 @@
-package com.java15.example.java8inaction.passingcodewithbehaviorparameterization;
+package com.java15.example.modern_java_in_action.ch2_passingcodewithbehaviorparameterization;
 
-import com.java15.example.java8inaction.Apple;
-import com.java15.example.java8inaction.Colors;
-import com.java15.example.java8inaction.Data;
+import com.java15.example.modern_java_in_action.Apple;
+import com.java15.example.modern_java_in_action.Colors;
+import com.java15.example.modern_java_in_action.Data;
 
 import java.util.ArrayList;
 import java.util.List;

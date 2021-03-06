@@ -1,8 +1,7 @@
-package com.java15.example.java8inaction.Java8_9_10_11_whatshappening;
+package com.java15.example.modern_java_in_action.ch1_java8_9_10_11_whatshappening;
 
-import com.java15.example.java8inaction.Apple;
-import com.java15.example.java8inaction.Colors;
-import com.java15.example.java8inaction.Data;
+import com.java15.example.modern_java_in_action.Apple;
+import com.java15.example.modern_java_in_action.Data;
 
 import java.io.File;
 import java.util.*;
