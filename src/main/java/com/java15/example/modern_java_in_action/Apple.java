@@ -1,8 +1,8 @@
-package com.java15.example.java8inaction;
+package com.java15.example.modern_java_in_action;
 
 public class Apple {
 
-    private int weight;
+    private Integer weight;
     private String color;
 
     public Apple(int weight){
@@ -13,7 +13,7 @@ public class Apple {
         this.weight = weight;this.color = color;
     }
 
-    public int getWeight() {
+    public Integer getWeight() {
         return weight;
     }
 
