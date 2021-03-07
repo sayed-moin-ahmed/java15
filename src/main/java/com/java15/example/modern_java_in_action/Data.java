@@ -21,7 +21,7 @@ public class Data {
         Apple apple2 = new Apple(1,Colors.RED);
         Apple apple3 = new Apple(5,Colors.GREEN);
         Apple apple4 = new Apple(3,Colors.RED);
-        Apple apple5 = new Apple(3,Colors.RED);
+        Apple apple5 = new Apple(7,Colors.RED);
         Apple apple6 = new Apple(5,Colors.GREEN);
         List<Apple> apples =  new ArrayList<>();
         apples.add(apple1);
