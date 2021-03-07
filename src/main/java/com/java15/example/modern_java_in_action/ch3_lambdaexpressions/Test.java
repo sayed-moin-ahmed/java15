@@ -3,6 +3,7 @@ package com.java15.example.modern_java_in_action.ch3_lambdaexpressions;
 import com.java15.example.modern_java_in_action.Apple;
 import com.java15.example.modern_java_in_action.Colors;
 
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.*;
@@ -14,7 +15,28 @@ public class Test {
 
     public static void main(String[] args) {
         //extracted1();
-        extracted2();
+        //extracted2();
+        //extracted3();
+        //extracted4(startsWithNumber.test("1he"));
+
+    }
+
+    private static void extracted4(boolean test) {
+        System.out.println(test);
+    }
+
+    static Predicate<String> startsWithNumber = (String string) -> Test.startsWithNumber(string);
+
+    static private Boolean startsWithNumber(String value) {
+        if(value.contains("1"))
+            return true;
+        return false;
+    }
+
+    private static void extracted3() {
+        List<String> str = Arrays.asList("a","b","A","B");
+        str.sort(String::compareToIgnoreCase);
+        str.forEach(System.out::println);
     }
 
     private static void extracted2() {
