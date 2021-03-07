@@ -13,6 +13,10 @@ public class Apple {
         this.weight = weight;this.color = color;
     }
 
+    public Apple() {
+
+    }
+
     public Integer getWeight() {
         return weight;
     }
