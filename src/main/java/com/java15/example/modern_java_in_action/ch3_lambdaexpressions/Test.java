@@ -27,7 +27,7 @@ public class Test {
         System.out.println(appleSupplier.get());
         Function<Integer,Apple> appleFunction = Apple::new;
         System.out.println(appleFunction.apply(10));
-        BiFunction<Integer,String,Apple> appleBiFunction = (i,c)->new Apple(i,c);
+        BiFunction<Integer,String,Apple> appleBiFunction = Apple::new;
         System.out.println(appleBiFunction.apply(10,Colors.RED));
         List<Integer> weights = Arrays.asList(7, 3, 4, 10);
         map(weights, Apple::new).forEach(System.out::println);
