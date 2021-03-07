@@ -2,12 +2,15 @@ package com.java15.example.modern_java_in_action.ch3_lambdaexpressions;
 
 import com.java15.example.modern_java_in_action.Apple;
 import com.java15.example.modern_java_in_action.Colors;
+import com.java15.example.modern_java_in_action.Data;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.*;
+
+import static java.util.Comparator.comparing;
 
 public class Test {
 
@@ -19,7 +22,46 @@ public class Test {
         //extracted2();
         //extracted3();
         //extracted4(startsWithNumber.test("1he"));
-        extracted5();
+        //extracted5();
+        //extracted6();
+        //extracted7();
+        //extracted8();
+        extracted9();
+    }
+
+    private static void extracted9() {
+        Function<Integer, Integer> f = x -> x + 1;
+        Function<Integer, Integer> g = x -> x * 2;
+        Function<Integer, Integer> h = f.compose(g);
+        int result = h.apply(1);
+        System.out.println(result);
+    }
+
+    private static void extracted8() {
+        Function<Integer, Integer> f = x -> x + 1;
+        Function<Integer, Integer> g = x -> x * 2;
+        Function<Integer, Integer> h = f.andThen(g);
+        int result = h.apply(1);
+        System.out.println(result);
+    }
+
+    private static void extracted7() {
+        Data.getData().stream().filter(notRedApple).forEach(System.out::println);
+        Data.getData().stream().filter(redAppleWithConditions).forEach(System.out::println);
+    }
+
+    static Predicate<Apple> redApple = apple -> Colors.RED.equals(apple.getColor());
+    static Predicate<Apple> notRedApple = redApple.negate();
+    static Predicate<Apple> redAppleWithConditions = redApple.and(apple -> apple.getWeight()>2).or(apple ->Colors.GREEN.equals(apple.getColor()));
+
+
+    private static void extracted6() {
+        List<Apple> list = Data.getData1();
+        list.sort(comparing(Apple::getWeight).reversed());
+        list.forEach(System.out::println);
+        System.out.println("++++++++++++++++++++++++++++++");
+        list.sort(comparing(Apple::getColor).thenComparing(Apple::getWeight));
+        list.forEach(System.out::println);
     }
 
     private static void extracted5() {
