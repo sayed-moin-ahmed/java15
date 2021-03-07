@@ -10,12 +10,11 @@ public class Apple {
     }
 
     public Apple(int weight,String color) {
-        this.weight = weight;this.color = color;
+        this.weight = weight;
+        this.color = color;
     }
 
-    public Apple() {
-
-    }
+    public Apple() {}
 
     public Integer getWeight() {
         return weight;
