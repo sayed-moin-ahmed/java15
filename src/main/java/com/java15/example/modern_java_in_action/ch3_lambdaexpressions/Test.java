@@ -3,6 +3,7 @@ package com.java15.example.modern_java_in_action.ch3_lambdaexpressions;
 import com.java15.example.modern_java_in_action.Apple;
 import com.java15.example.modern_java_in_action.Colors;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
@@ -18,7 +19,25 @@ public class Test {
         //extracted2();
         //extracted3();
         //extracted4(startsWithNumber.test("1he"));
+        extracted5();
+    }
 
+    private static void extracted5() {
+        Supplier<Apple> appleSupplier = Apple::new;
+        System.out.println(appleSupplier.get());
+        Function<Integer,Apple> appleFunction = Apple::new;
+        System.out.println(appleFunction.apply(10));
+        BiFunction<Integer,String,Apple> appleBiFunction = (i,c)->new Apple(i,c);
+        System.out.println(appleBiFunction.apply(10,Colors.RED));
+        List<Integer> weights = Arrays.asList(7, 3, 4, 10);
+        map(weights, Apple::new).forEach(System.out::println);
+    }
+    static public List<Apple> map(List<Integer> list, Function<Integer, Apple> f) {
+        List<Apple> result = new ArrayList<>();
+        for(Integer i: list) {
+            result.add(f.apply(i));
+        }
+        return result;
     }
 
     private static void extracted4(boolean test) {
@@ -28,9 +47,7 @@ public class Test {
     static Predicate<String> startsWithNumber = (String string) -> Test.startsWithNumber(string);
 
     static private Boolean startsWithNumber(String value) {
-        if(value.contains("1"))
-            return true;
-        return false;
+        return value.contains("1");
     }
 
     private static void extracted3() {
