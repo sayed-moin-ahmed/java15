@@ -16,7 +16,7 @@ import static java.util.stream.Collectors.groupingBy;
 
 public class Test {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
-        List<Apple> apples = Data.getData();
+        List<Apple> apples = Data.getApples();
         // beforeJava8(apples);
         //filter(apples,(Apple e) -> Colors.GREEN.equals(e.getColor())).forEach(System.out::println);
         // groupBy(apples,apple -> apple.getWeight()).forEach((i, list)->System.out.println(i+""+list));
