@@ -46,8 +46,8 @@ public class Test {
     }
 
     private static void extracted7() {
-        Data.getData().stream().filter(notRedApple).forEach(System.out::println);
-        Data.getData().stream().filter(redAppleWithConditions).forEach(System.out::println);
+        Data.getApples().stream().filter(notRedApple).forEach(System.out::println);
+        Data.getApples().stream().filter(redAppleWithConditions).forEach(System.out::println);
     }
 
     static Predicate<Apple> redApple = apple -> Colors.RED.equals(apple.getColor());
@@ -56,7 +56,7 @@ public class Test {
 
 
     private static void extracted6() {
-        List<Apple> list = Data.getData1();
+        List<Apple> list = Data.getApples1();
         list.sort(comparing(Apple::getWeight).reversed());
         list.forEach(System.out::println);
         System.out.println("++++++++++++++++++++++++++++++");
