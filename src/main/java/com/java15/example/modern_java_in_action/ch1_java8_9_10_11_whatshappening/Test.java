@@ -13,7 +13,7 @@ import static java.util.stream.Collectors.groupingBy;
 public class Test {
 
     public static void main(String[] args) {
-        List<Apple>  apples = Data.getData();
+        List<Apple>  apples = Data.getApples();
         //filterApples(apples,(Apple a) -> Colors.GREEN.equals(a.getColor())).stream().forEach(System.out::println);
         // filterApples(apples,(Apple a) -> Colors.GREEN.equals(a.getColor())).stream().forEach(System.out::println);
         // filterGroupApples(apples,(Apple a) -> Colors.RED.equals(a.getColor())).forEach((i,list) ->{System.out.println(i+""+list);});
