@@ -5,7 +5,7 @@ import java.util.Comparator;
 import java.util.List;
 
 public class Data {
-    public static List<Apple> getData() {
+    public static List<Apple> getApples() {
         Apple apple1 = new Apple(10, Colors.GREEN);
         Apple apple2 = new Apple(1,Colors.RED);
         Apple apple3 = new Apple(5,Colors.GREEN);
@@ -16,7 +16,7 @@ public class Data {
         return apples;
     }
 
-    public static List<Apple> getData1() {
+    public static List<Apple> getApples1() {
         Apple apple1 = new Apple(10,Colors.GREEN);
         Apple apple2 = new Apple(1,Colors.RED);
         Apple apple3 = new Apple(5,Colors.GREEN);
@@ -32,5 +32,16 @@ public class Data {
         apples.add(apple6);
         apples.sort(Comparator.comparing(Apple::getWeight));
         return apples;
+    }
+
+    public static List<Dish> getDishes(){
+        return  List.of(
+                new Dish(Type.INDIAN,"Pav Bhaji",50),
+                new Dish(Type.WESTERN,"Chicken Roast",250),
+                new Dish(Type.CHINESE,"Noodles",150),
+                new Dish(Type.INDIAN,"Bhaji",150),
+                new Dish(Type.WESTERN,"Lamb ",550),
+                new Dish(Type.CHINESE,"Prawn Noodles",250)
+        );
     }
 }
