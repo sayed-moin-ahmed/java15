@@ -3,6 +3,9 @@ package com.java15.example;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.*;
+import java.util.stream.Stream;
+
 /**
  *
  */
@@ -10,8 +13,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class ExampleApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ExampleApplication.class, args);
-		System.out.println("Started...");
+		
+
 	}
+
 
 }
