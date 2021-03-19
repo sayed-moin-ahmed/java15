@@ -6,6 +6,7 @@ import com.java15.example.modern_java_in_action.Transaction;
 import com.java15.example.modern_java_in_action.Type;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -55,5 +56,28 @@ public class Test {
                 new Transaction(mario, 2012, 700),
                 new Transaction(alan, 2012, 950)
         );
+
+        //transactions.stream().filter(transaction ->2011 == transaction.getYear()).sorted(Comparator.comparing(Transaction::getValue)).collect(toList()).forEach(System.out::println);
+        //transactions.stream().map(Transaction::getTrader).map(Trader::getCity).distinct().collect(Collectors.toList()).forEach(System.out::println);
+       /* transactions.stream()
+                .map(Transaction::getTrader)
+                .filter(trader -> "Cambridge".equals(trader.getCity()))
+                .map(Trader::getName)
+                .sorted()
+                .collect(Collectors.toList())
+                .forEach(System.out::println);*/
+
+        /*String value = transactions.stream()
+                .map(Transaction::getTrader)
+                .map(Trader::getName)
+                .distinct()
+                .sorted()
+                .reduce("",(n1,n2)->n1+n2);
+        System.out.println(value);*/
+
+       /* Optional<Integer> maxTransactions = transactions.stream()
+                .map(Transaction::getValue)
+                .reduce(Integer::max);
+        System.out.println(maxTransactions.get());*/
     }
 }
