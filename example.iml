@@ -127,5 +127,8 @@
     <orderEntry type="library" name="Maven: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.4.10" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.jetbrains.kotlin:kotlin-test:1.4.10" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.jetbrains.kotlin:kotlin-test-common:1.4.10" level="project" />
+    <orderEntry type="library" name="Maven: org.testng:testng:7.4.0" level="project" />
+    <orderEntry type="library" name="Maven: com.beust:jcommander:1.78" level="project" />
+    <orderEntry type="library" name="Maven: org.webjars:jquery:3.5.1" level="project" />
   </component>
 </module>
