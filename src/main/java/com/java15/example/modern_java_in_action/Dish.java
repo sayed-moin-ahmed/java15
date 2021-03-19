@@ -14,6 +14,12 @@ public class Dish {
         this.calories = calories;
     }
 
+    public Dish(String name, boolean b, int calories, Type type) {
+        this.name = name;
+        this.calories = calories;
+        this.type = type;
+    }
+
     public Type getType() {
         return type;
     }
