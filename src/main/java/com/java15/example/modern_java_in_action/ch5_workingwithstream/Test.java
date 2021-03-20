@@ -94,8 +94,15 @@ public class Test {
         System.out.println( transactions.stream().mapToInt(Transaction::getValue).max());
         System.out.println( transactions.stream().mapToInt(Transaction::getValue).count());*/
 
-        UnaryOperator<String> lowerCase =  String::toLowerCase;
+        /*UnaryOperator<String> lowerCase =  String::toLowerCase;
         Stream.generate(()->"Hello World!").limit(5).forEach(System.out::println);
-        Stream.iterate("Hello World!",lowerCase).limit(4).forEach(System.out::println);
+        Stream.iterate("Hello World!",lowerCase).limit(4).forEach(System.out::println);*/
+
+        /*IntStream evenNumbers = IntStream.rangeClosed(1, 100).filter(n -> n % 2 == 0);
+        evenNumbers.forEach(System.out::println);*/
+
+        IntStream.rangeClosed(1, 100)
+                .mapToObj(b -> new Dish())
+                .forEach(System.out::println);
     }
 }
