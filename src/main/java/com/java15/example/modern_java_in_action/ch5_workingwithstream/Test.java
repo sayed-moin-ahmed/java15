@@ -5,11 +5,10 @@ import com.java15.example.modern_java_in_action.Trader;
 import com.java15.example.modern_java_in_action.Transaction;
 import com.java15.example.modern_java_in_action.Type;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toList;
@@ -79,5 +78,24 @@ public class Test {
                 .map(Transaction::getValue)
                 .reduce(Integer::max);
         System.out.println(maxTransactions.get());*/
+
+      /* OptionalInt sumValue =  transactions.stream()
+                .mapToInt(Transaction::getValue)
+                .max();
+       System.out.println(sumValue.orElse(0));
+
+       int sum = transactions.stream()
+               .mapToInt(Transaction::getValue)
+               .sum();
+       System.out.println(sum);*/
+
+       /* System.out.println( transactions.stream().mapToInt(Transaction::getValue).average());
+        System.out.println( transactions.stream().mapToInt(Transaction::getValue).min());
+        System.out.println( transactions.stream().mapToInt(Transaction::getValue).max());
+        System.out.println( transactions.stream().mapToInt(Transaction::getValue).count());*/
+
+        UnaryOperator<String> lowerCase =  String::toLowerCase;
+        Stream.generate(()->"Hello World!").limit(5).forEach(System.out::println);
+        Stream.iterate("Hello World!",lowerCase).limit(4).forEach(System.out::println);
     }
 }
