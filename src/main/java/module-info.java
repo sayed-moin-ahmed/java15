@@ -5,5 +5,4 @@ module example {
     requires spring.web;
     requires spring.boot.actuator;
     requires java.sql;
-    requires kotlin.stdlib;
 }
