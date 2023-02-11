@@ -72,8 +72,8 @@ public class Application {
     private static void instanceOfDemo(Consumer<String> consumer) {
         I1 i1 = new I1Impl();
         I2 i2 = new I2Impl();
-        if(i1 instanceof I1 var){
-            consumer.accept(var.msg("Hello"," World"));
+        if(i1 instanceof I1){
+            consumer.accept(i1.msg("Hello"," World"));
         }
     }
 

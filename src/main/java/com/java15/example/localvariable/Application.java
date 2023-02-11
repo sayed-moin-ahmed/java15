@@ -1,5 +1,7 @@
 package com.java15.example.localvariable;
 
+import com.java15.example.collections.Customer;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -31,11 +33,11 @@ public class Application {
 
     private static void collectionDemo() {
         var list = new ArrayList<Customer>();
-        var customer1=new Customer("Hello","World");
+        var customer1=new Customer(1,"World");
         list.add(customer1);
-        list.add(new Customer("Hello","Sam"));
+        list.add(new Customer(2,"Sam"));
         var stream = list.stream();
-        var element = stream.map(Customer::lastName).findFirst();
+        var element = stream.map(Customer::getName).findFirst();
         element.ifPresent(s -> stringConsumer.accept(s));
         for(var customer : list)
             customerConsumer.accept(customer);
